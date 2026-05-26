@@ -311,12 +311,12 @@ function pfFilter(filter, btn) {
   <div class="container">
  
     <!-- Filtres -->
-    <ul class="portfolio-filters isotope-filters d-flex flex-wrap gap-2 list-unstyled justify-content-center mb-4" data-aos="fade-up" data-aos-delay="100">
-      <li class="filter-active pf-btn" onclick="pfFilter('all', this)">Tout</li>
-      <li class="pf-btn" onclick="pfFilter('administrer', this)">Administrer</li>
-      <li class="pf-btn" onclick="pfFilter('connecter', this)">Connecter</li>
-      <li class="pf-btn" onclick="pfFilter('programmer', this)">Programmer</li>
-    </ul>
+   <div class="d-flex flex-wrap gap-2 justify-content-center mb-4" data-aos="fade-up" data-aos-delay="100">
+  <button class="pf-btn filter-active" onclick="pfFilter('all', this)">Tout</button>
+  <button class="pf-btn" onclick="pfFilter('administrer', this)">Administrer</button>
+  <button class="pf-btn" onclick="pfFilter('connecter', this)">Connecter</button>
+  <button class="pf-btn" onclick="pfFilter('programmer', this)">Programmer</button>
+</div>
  
     <!-- ADMINISTRER -->
     <div id="pf-administrer" class="pf-comp-block mb-5">
