@@ -1267,3 +1267,46 @@ section,
   color: var(--accent-color);
 }
 
+<style>
+.pf-btn {
+  cursor: pointer;
+  padding: 6px 18px;
+  border-radius: 50px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  transition: all .2s;
+  list-style: none;
+}
+.pf-btn:hover { background: #f5f5f5; }
+.pf-btn.filter-active { background: #149ddd; color: #fff; border-color: #149ddd; }
+ 
+.pf-section-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: #999;
+  margin-bottom: 12px;
+}
+.pf-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.pf-badge-red    { background: #fee2e2; color: #991b1b; }
+.pf-badge-amber  { background: #fef3c7; color: #92400e; }
+.pf-badge-yellow { background: #fefce8; color: #854d0e; }
+ 
+.pf-comp-block { display: block; }
+.pf-comp-block.hidden { display: none; }
+ 
+.accordion-button { display: flex; align-items: flex-start; font-size: 14px; }
+</style>
+
