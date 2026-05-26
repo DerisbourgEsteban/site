@@ -1310,9 +1310,19 @@ section,
 .accordion-button { display: flex; align-items: flex-start; font-size: 14px; }
 </style>
 
-<div class="d-flex flex-wrap gap-2 justify-content-center mb-4" data-aos="fade-up" data-aos-delay="100">
-  <button class="pf-btn filter-active" onclick="pfFilter('all', this)">Tout</button>
-  <button class="pf-btn" onclick="pfFilter('administrer', this)">Administrer</button>
-  <button class="pf-btn" onclick="pfFilter('connecter', this)">Connecter</button>
-  <button class="pf-btn" onclick="pfFilter('programmer', this)">Programmer</button>
-</div>
+.pf-btn {
+  cursor: pointer;
+  padding: 6px 18px;
+  border-radius: 50px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  transition: all .2s;
+  text-decoration: none;
+  outline: none;
+  box-shadow: none;
+}
+.pf-btn:hover { background: #f5f5f5; border-color: #bbb; }
+.pf-btn.filter-active { background: #149ddd; color: #fff; border-color: #149ddd; }
