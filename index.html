@@ -35,7 +35,20 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-
+<script>
+function pfFilter(filter, btn) {
+  document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('filter-active'));
+  btn.classList.add('filter-active');
+  ['administrer','connecter','programmer'].forEach(key => {
+    const el = document.getElementById('pf-' + key);
+    if (filter === 'all' || filter === key) {
+      el.classList.remove('hidden');
+    } else {
+      el.classList.add('hidden');
+    }
+  });
+}
+</script>
 <body class="index-page">
 
   <header id="header" class="header dark-background d-flex flex-column">
