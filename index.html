@@ -287,101 +287,288 @@
 
     </section><!-- /Resume Section -->
 
-    <!-- Portfolio Section -->
+   <!-- Portfolio Section -->
 <section id="portfolio" class="portfolio section light-background">
-
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Portfolio</h2>
-        <p>Mes projets techniques classés par compétences métiers.</p>
-      </div>
-
-      <div class="container">
-
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">Tout</li>
-            <li data-filter=".filter-administrer">Administrer</li>
-            <li data-filter=".filter-connecter">Connecter</li>
-            <li data-filter=".filter-programmer">Programmer</li>
-            <li data-filter=".filter-securiser">Sécuriser</li>
-            <li data-filter=".filter-surveiller">Surveiller</li>
-          </ul>
-
-          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-administrer">
-              </div>
-            <div class="col-md-6 col-lg-3 mb-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">AC11.01 | Maîtriser les lois fondamentales de l'électricité afin d'intervenir sur des équipements de réseaux et télécommunications. </h5>
-                        <p class="card-text text-muted small"></p>
-                        <a href="" class="btn btn-outline-primary btn-sm stretched-link">AC11.01</a>
-                    </div>
-                </div>
-                </div><div class="col-md-6 col-lg-3 mb-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">TP3 : Droits sur les fichiers </h5>
-                        <p class="card-text text-muted small">Comptes-rendus à venir...</p>
-                        <a href="tp/administrer/TP 3 droits sur les fichiers redirection diff patch.pdf" class="btn btn-outline-primary btn-sm stretched-link">Sujet</a>
-                    </div>
-                </div>
+ 
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Portfolio</h2>
+    <p>Mes projets techniques classés par compétences métiers — BUT R&T, 1ère année (tronc commun).</p>
+  </div>
+ 
+  <div class="container">
+ 
+    <!-- Filtres -->
+    <ul class="portfolio-filters isotope-filters d-flex flex-wrap gap-2 list-unstyled justify-content-center mb-4" data-aos="fade-up" data-aos-delay="100">
+      <li class="filter-active pf-btn" onclick="pfFilter('all', this)">Tout</li>
+      <li class="pf-btn" onclick="pfFilter('administrer', this)">Administrer</li>
+      <li class="pf-btn" onclick="pfFilter('connecter', this)">Connecter</li>
+      <li class="pf-btn" onclick="pfFilter('programmer', this)">Programmer</li>
+    </ul>
+ 
+    <!-- ADMINISTRER -->
+    <div id="pf-administrer" class="pf-comp-block mb-5">
+      <p class="pf-section-label">Administrer — Niveau 1 : Assister l'administrateur du réseau</p>
+      <div class="accordion" id="acc-administrer">
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#adm01">
+              <span class="pf-badge pf-badge-red me-2">AC11.01</span>
+              Maîtriser les lois fondamentales de l'électricité afin d'intervenir sur des équipements de réseaux et télécommunications
+            </button>
+          </h2>
+          <div id="adm01" class="accordion-collapse collapse" data-bs-parent="#acc-administrer">
+            <div class="accordion-body">
+              Comprendre et appliquer les lois d'Ohm et de Kirchhoff, les notions de tension, courant, résistance et puissance — indispensables pour intervenir physiquement sur des équipements actifs ou passifs d'infrastructure réseau.
             </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-connecter">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/connecter.jpg" class="img-fluid" alt="Projet Connexion">
-                <div class="portfolio-info">
-                  <h4>Connecter</h4>
-                  <p>Simulation Infrastructure Réseau (Cisco Packet Tracer)</p>
-                  <a href="assets/img/portfolio/connecter.jpg" title="Connecter" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="connecter.html" class="details-link" title="Détails"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-programmer">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/programmer.jpg" class="img-fluid" alt="Projet Programmation">
-                <div class="portfolio-info">
-                  <h4>Programmer</h4>
-                  <p>Développement C++ et Algorithmique</p>
-                  <a href="assets/img/portfolio/programmer.jpg" title="Programmer" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="programmer.html" class="details-link" title="Détails"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-securiser">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/securiser.jpg" class="img-fluid" alt="Projet Sécurité">
-                <div class="portfolio-info">
-                  <h4>Sécuriser</h4>
-                  <p>Sensibilisation Cybersécurité et pare-feu</p>
-                  <a href="assets/img/portfolio/securiser.jpg" title="Sécuriser" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="securiser.html" class="details-link" title="Détails"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-surveiller">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/surveiller.jpg" class="img-fluid" alt="Projet Surveillance">
-                <div class="portfolio-info">
-                  <h4>Surveiller</h4>
-                  <p>Analyse de trames et supervision réseau</p>
-                  <a href="assets/img/portfolio/surveiller.jpg" title="Surveiller" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="surveiller.html" class="details-link" title="Détails"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#adm02">
+              <span class="pf-badge pf-badge-red me-2">AC11.02</span>
+              Comprendre l'architecture et les fondements des systèmes numériques, les principes du codage de l'information, des communications et de l'Internet
+            </button>
+          </h2>
+          <div id="adm02" class="accordion-collapse collapse" data-bs-parent="#acc-administrer">
+            <div class="accordion-body">
+              Connaître le modèle OSI / TCP-IP, les adressages IP, les protocoles fondamentaux (ARP, ICMP, DNS, DHCP…) et la logique de communication entre équipements d'un réseau.
+            </div>
+          </div>
+        </div>
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#adm03">
+              <span class="pf-badge pf-badge-red me-2">AC11.03</span>
+              Configurer les fonctions de base du réseau local
+            </button>
+          </h2>
+          <div id="adm03" class="accordion-collapse collapse" data-bs-parent="#acc-administrer">
+            <div class="accordion-body">
+              Paramétrer des équipements de niveau 2 et 3 (switchs, routeurs) : VLANs, adressage statique / dynamique, routage de base et services réseau essentiels.
+            </div>
+          </div>
+        </div>
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#adm04">
+              <span class="pf-badge pf-badge-red me-2">AC11.04</span>
+              Maîtriser les rôles et les principes fondamentaux des systèmes d'exploitation afin d'interagir avec ceux-ci pour la configuration et l'administration des réseaux et services fournis
+            </button>
+          </h2>
+          <div id="adm04" class="accordion-collapse collapse" data-bs-parent="#acc-administrer">
+            <div class="accordion-body">
+              Utiliser Linux et Windows Server en ligne de commande pour administrer des services (fichiers, utilisateurs, permissions, services réseau).
+            </div>
+          </div>
+        </div>
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#adm05">
+              <span class="pf-badge pf-badge-red me-2">AC11.05</span>
+              Identifier les dysfonctionnements du réseau local et savoir les signaler
+            </button>
+          </h2>
+          <div id="adm05" class="accordion-collapse collapse" data-bs-parent="#acc-administrer">
+            <div class="accordion-body">
+              Diagnostiquer des pannes réseau (câblage, configuration, protocoles), utiliser des outils de test (ping, traceroute, Wireshark) et rédiger un compte-rendu de dysfonctionnement.
+            </div>
+          </div>
+        </div>
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#adm06">
+              <span class="pf-badge pf-badge-red me-2">AC11.06</span>
+              Installer un poste client, expliquer la procédure mise en place
+            </button>
+          </h2>
+          <div id="adm06" class="accordion-collapse collapse" data-bs-parent="#acc-administrer">
+            <div class="accordion-body">
+              Préparer et déployer un poste de travail (OS, drivers, logiciels), le connecter au réseau, configurer ses paramètres et documenter la procédure réalisée.
+            </div>
+          </div>
+        </div>
+ 
       </div>
-    </section>
+    </div>
+ 
+    <!-- CONNECTER -->
+    <div id="pf-connecter" class="pf-comp-block mb-5">
+      <p class="pf-section-label">Connecter — Niveau 1 : Découvrir les transmissions et la ToIP</p>
+      <div class="accordion" id="acc-connecter">
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#con01">
+              <span class="pf-badge pf-badge-amber me-2">AC12.01</span>
+              Mesurer et analyser les signaux
+            </button>
+          </h2>
+          <div id="con01" class="accordion-collapse collapse" data-bs-parent="#acc-connecter">
+            <div class="accordion-body">
+              Utiliser des instruments (oscilloscope, analyseur de spectre) pour observer des signaux analogiques et numériques, en mesurer les caractéristiques et interpréter les résultats.
+            </div>
+          </div>
+        </div>
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#con02">
+              <span class="pf-badge pf-badge-amber me-2">AC12.02</span>
+              Caractériser des systèmes de transmissions élémentaires et découvrir la modélisation mathématique de leur fonctionnement
+            </button>
+          </h2>
+          <div id="con02" class="accordion-collapse collapse" data-bs-parent="#acc-connecter">
+            <div class="accordion-body">
+              Comprendre les notions de bande passante, atténuation, débit, bruit, et les modèles de transmission (filtrages, modulations de base).
+            </div>
+          </div>
+        </div>
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#con03">
+              <span class="pf-badge pf-badge-amber me-2">AC12.03</span>
+              Déployer des supports de transmission
+            </button>
+          </h2>
+          <div id="con03" class="accordion-collapse collapse" data-bs-parent="#acc-connecter">
+            <div class="accordion-body">
+              Installer et raccorder des supports filaires (cuivre, fibre optique) et sans fil, en respectant les normes de câblage et les bonnes pratiques de déploiement.
+            </div>
+          </div>
+        </div>
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#con04">
+              <span class="pf-badge pf-badge-amber me-2">AC12.04</span>
+              Connecter les systèmes de ToIP
+            </button>
+          </h2>
+          <div id="con04" class="accordion-collapse collapse" data-bs-parent="#acc-connecter">
+            <div class="accordion-body">
+              Mettre en service des équipements de téléphonie sur IP (softphones, IPBX) et configurer les paramètres SIP de base pour établir des communications.
+            </div>
+          </div>
+        </div>
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#con05">
+              <span class="pf-badge pf-badge-amber me-2">AC12.05</span>
+              Communiquer avec un tiers (client, collaborateur…) et adapter son discours et sa langue à son interlocuteur
+            </button>
+          </h2>
+          <div id="con05" class="accordion-collapse collapse" data-bs-parent="#acc-connecter">
+            <div class="accordion-body">
+              Rédiger une documentation technique claire, présenter oralement une solution ou un incident, et adapter son niveau de langage selon l'interlocuteur (technicien ou non-technicien).
+            </div>
+          </div>
+        </div>
+ 
+      </div>
+    </div>
+ 
+    <!-- PROGRAMMER -->
+    <div id="pf-programmer" class="pf-comp-block mb-5">
+      <p class="pf-section-label">Programmer — Niveau 1 : S'intégrer dans un service informatique</p>
+      <div class="accordion" id="acc-programmer">
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro01">
+              <span class="pf-badge pf-badge-yellow me-2">AC13.01</span>
+              Utiliser un système informatique et ses outils
+            </button>
+          </h2>
+          <div id="pro01" class="accordion-collapse collapse" data-bs-parent="#acc-programmer">
+            <div class="accordion-body">
+              Maîtriser l'environnement de travail (IDE, terminal, gestionnaire de fichiers, outils de versioning) pour développer et tester des programmes.
+            </div>
+          </div>
+        </div>
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro02">
+              <span class="pf-badge pf-badge-yellow me-2">AC13.02</span>
+              Lire, exécuter, corriger et modifier un programme
+            </button>
+          </h2>
+          <div id="pro02" class="accordion-collapse collapse" data-bs-parent="#acc-programmer">
+            <div class="accordion-body">
+              Comprendre le flux d'exécution d'un programme existant, identifier et corriger des bugs, et faire évoluer le code selon de nouveaux besoins.
+            </div>
+          </div>
+        </div>
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro03">
+              <span class="pf-badge pf-badge-yellow me-2">AC13.03</span>
+              Traduire un algorithme, dans un langage et pour un environnement donné
+            </button>
+          </h2>
+          <div id="pro03" class="accordion-collapse collapse" data-bs-parent="#acc-programmer">
+            <div class="accordion-body">
+              Implémenter un algorithme (tri, recherche, traitement de données) en Python, Bash ou C selon le contexte, en respectant la syntaxe et les conventions du langage.
+            </div>
+          </div>
+        </div>
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro04">
+              <span class="pf-badge pf-badge-yellow me-2">AC13.04</span>
+              Connaître l'architecture et les technologies d'un site Web
+            </button>
+          </h2>
+          <div id="pro04" class="accordion-collapse collapse" data-bs-parent="#acc-programmer">
+            <div class="accordion-body">
+              Comprendre le fonctionnement d'un serveur web (HTTP/HTTPS), les langages front-end (HTML, CSS) et les bases d'un CMS ou d'un framework simple.
+            </div>
+          </div>
+        </div>
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro05">
+              <span class="pf-badge pf-badge-yellow me-2">AC13.05</span>
+              Choisir les mécanismes de gestion de données adaptés au développement de l'outil et argumenter ses choix
+            </button>
+          </h2>
+          <div id="pro05" class="accordion-collapse collapse" data-bs-parent="#acc-programmer">
+            <div class="accordion-body">
+              Identifier les besoins de stockage (fichiers plats, bases de données), choisir une solution adaptée et justifier techniquement ce choix.
+            </div>
+          </div>
+        </div>
+ 
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro06">
+              <span class="pf-badge pf-badge-yellow me-2">AC13.06</span>
+              S'intégrer dans un environnement propice au développement et au travail collaboratif
+            </button>
+          </h2>
+          <div id="pro06" class="accordion-collapse collapse" data-bs-parent="#acc-programmer">
+            <div class="accordion-body">
+              Utiliser Git pour versionner son code, travailler en équipe sur un dépôt partagé, et respecter les bonnes pratiques de collaboration (commits, branches, merge requests).
+            </div>
+          </div>
+        </div>
+ 
+      </div>
+    </div>
+ 
+  </div>
+</section>
 
    
   </main>
