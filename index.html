@@ -298,6 +298,7 @@ function pfFilter(filter, btn) {
     </section><!-- /Resume Section -->
 
    <!-- Portfolio Section -->
+<!-- Portfolio Section -->
 <section id="portfolio" class="portfolio section light-background">
  
   <div class="container section-title" data-aos="fade-up">
@@ -308,18 +309,19 @@ function pfFilter(filter, btn) {
   <div class="container">
  
     <!-- Filtres -->
-   <div class="d-flex flex-wrap gap-2 justify-content-center mb-4" data-aos="fade-up" data-aos-delay="100">
-  <button class="pf-btn filter-active" onclick="pfFilter('all', this)">Tout</button>
-  <button class="pf-btn" onclick="pfFilter('administrer', this)">Administrer</button>
-  <button class="pf-btn" onclick="pfFilter('connecter', this)">Connecter</button>
-  <button class="pf-btn" onclick="pfFilter('programmer', this)">Programmer</button>
-</div>
+    <div class="d-flex flex-wrap gap-2 justify-content-center mb-4" data-aos="fade-up" data-aos-delay="100">
+      <button class="pf-btn filter-active" onclick="pfFilter('all', this)">Tout</button>
+      <button class="pf-btn" onclick="pfFilter('administrer', this)">Administrer</button>
+      <button class="pf-btn" onclick="pfFilter('connecter', this)">Connecter</button>
+      <button class="pf-btn" onclick="pfFilter('programmer', this)">Programmer</button>
+    </div>
  
     <!-- ADMINISTRER -->
     <div id="pf-administrer" class="pf-comp-block mb-5">
       <p class="pf-section-label">Administrer — Niveau 1 : Assister l'administrateur du réseau</p>
       <div class="accordion" id="acc-administrer">
- 
+
+        <!-- AC11.01 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#adm01">
@@ -329,11 +331,34 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="adm01" class="accordion-collapse collapse" data-bs-parent="#acc-administrer">
             <div class="accordion-body">
-              Comprendre et appliquer les lois d'Ohm et de Kirchhoff, les notions de tension, courant, résistance et puissance — indispensables pour intervenir physiquement sur des équipements actifs ou passifs d'infrastructure réseau.
+              <p class="pf-desc">Comprendre et appliquer les lois d'Ohm et de Kirchhoff, les notions de tension, courant, résistance et puissance — indispensables pour intervenir physiquement sur des équipements actifs ou passifs d'infrastructure réseau.</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>J'ai réalisé des travaux pratiques sur un circuit RC (R=39kΩ, C=1nF) afin d'analyser le comportement d'un filtre passe-bas. J'ai effectué des mesures de tension et de phase à différentes fréquences à l'aide d'un oscilloscope, puis tracé le diagramme de Bode correspondant.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>Ces lois sont la base de tout équipement électronique réseau. Comprendre comment le courant et la tension se comportent dans un circuit passif est indispensable pour diagnostiquer une panne matérielle ou câbler correctement une baie réseau.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Utilisation d'un oscilloscope numérique pour observer les signaux d'entrée et de sortie, mesure du déphasage entre les deux canaux, calcul de la fréquence de coupure théorique (Fc ≈ 4,08 kHz) et comparaison avec les mesures expérimentales.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>La lecture précise du déphasage sur l'oscilloscope était délicate, surtout aux fréquences proches de la coupure où les signaux sont très atténués. J'ai dû recommencer plusieurs mesures pour obtenir des résultats cohérents avec le modèle théorique.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>J'ai compris concrètement la notion de fréquence de coupure et l'impact de chaque composant sur le comportement du filtre. J'ai aussi appris à utiliser un oscilloscope en mode double-trace et à interpréter un diagramme de Bode réel face au modèle théorique.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
+        <!-- AC11.02 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#adm02">
@@ -343,11 +368,34 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="adm02" class="accordion-collapse collapse" data-bs-parent="#acc-administrer">
             <div class="accordion-body">
-              Connaître le modèle OSI / TCP-IP, les adressages IP, les protocoles fondamentaux (ARP, ICMP, DNS, DHCP…) et la logique de communication entre équipements d'un réseau.
+              <p class="pf-desc">Connaître le modèle OSI / TCP-IP, les adressages IP, les protocoles fondamentaux (ARP, ICMP, DNS, DHCP…) et la logique de communication entre équipements d'un réseau.</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>J'ai étudié le modèle OSI et le modèle TCP/IP en cours, puis mis en pratique en capturant des trames réseau avec Wireshark pour identifier chaque couche (Ethernet, IP, TCP, applicatif) et comprendre l'encapsulation des données.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>Savoir décortiquer une communication réseau est fondamental pour tout technicien R&T. Que ce soit pour diagnostiquer un problème ou sécuriser un réseau, comprendre ce qui circule et comment c'est encodé est une compétence de base incontournable.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Via des exercices de codage (binaire, hexadécimal, ASCII) et des captures Wireshark en TP. J'ai reconstitué manuellement le chemin d'un paquet HTTP depuis la couche physique jusqu'à la couche application en annotant chaque en-tête.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>L'abstraction des couches OSI était difficile à visualiser au départ. Faire le lien entre un concept théorique (ex. PDU de couche 3) et ce que je voyais concrètement dans Wireshark a demandé plusieurs séances de pratique.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>Je suis désormais capable de lire une capture réseau et d'identifier immédiatement les protocoles en jeu, les adresses source/destination à chaque niveau, et de détecter une anomalie comme une requête ARP suspecte ou un DNS qui ne répond pas.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
+        <!-- AC11.03 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#adm03">
@@ -357,11 +405,34 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="adm03" class="accordion-collapse collapse" data-bs-parent="#acc-administrer">
             <div class="accordion-body">
-              Paramétrer des équipements de niveau 2 et 3 (switchs, routeurs) : VLANs, adressage statique / dynamique, routage de base et services réseau essentiels.
+              <p class="pf-desc">Paramétrer des équipements de niveau 2 et 3 (switchs, routeurs) : VLANs, adressage statique / dynamique, routage de base et services réseau essentiels.</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>J'ai configuré des switchs et routeurs Cisco dans Packet Tracer : création de VLANs, attribution d'adresses IP statiques, configuration du routage inter-VLAN et mise en place du protocole RIP pour le routage dynamique. J'ai capturé et analysé les échanges RIP pour vérifier la convergence du réseau.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>Configurer un LAN est le cœur du métier d'administrateur réseau. Savoir segmenter un réseau en VLANs et mettre en place un routage dynamique permet de gérer efficacement une infrastructure d'entreprise tout en limitant les domaines de broadcast.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Sur Cisco Packet Tracer, j'ai construit la topologie réseau, configuré les interfaces en mode CLI Cisco IOS (commandes <code>vlan</code>, <code>ip address</code>, <code>router rip</code>), puis validé la connectivité par des ping et en observant les tables de routage avec <code>show ip route</code>.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>La configuration du routage inter-VLAN via des sous-interfaces (router-on-a-stick) était source d'erreurs : oubli de l'encapsulation dot1Q ou mauvais assignement du VLAN natif. Cela m'a obligé à relire attentivement chaque commande et son effet.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>J'ai acquis une vraie maîtrise du CLI Cisco pour la configuration de base, et compris la logique du routage dynamique RIP (distance vecteur, mises à jour périodiques, convergence). Je suis maintenant à l'aise pour lire une table de routage et identifier un problème de connectivité.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
+        <!-- AC11.04 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#adm04">
@@ -371,11 +442,34 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="adm04" class="accordion-collapse collapse" data-bs-parent="#acc-administrer">
             <div class="accordion-body">
-              Utiliser Linux et Windows Server en ligne de commande pour administrer des services (fichiers, utilisateurs, permissions, services réseau).
+              <p class="pf-desc">Utiliser Linux et Windows Server en ligne de commande pour administrer des services (fichiers, utilisateurs, permissions, services réseau).</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>J'ai installé et configuré une machine virtuelle Ubuntu (VM VirtualBox) pour y déployer des services réseau. J'ai aussi travaillé sur un projet Flask/PostgreSQL/Docker (FitTracker) qui m'a amené à administrer un environnement Linux complet via terminal.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>La majorité des serveurs en entreprise tournent sous Linux. Être à l'aise en ligne de commande est non négociable pour un futur administrateur réseau ou ingénieur en cybersécurité. C'est aussi la base pour comprendre comment les services réseau (Apache, DHCP, DNS) s'installent et se gèrent.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Via des TPs en salle et en autonomie sur ma VM : gestion des utilisateurs (<code>useradd</code>, <code>chmod</code>, <code>chown</code>), installation de paquets (<code>apt</code>), configuration réseau (<code>ip</code>, <code>netplan</code>), et démarrage/arrêt de services (<code>systemctl</code>).</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>La gestion des permissions Linux et les erreurs de droits (<code>Permission denied</code>) étaient régulièrement bloquantes. Les problèmes de réseau sur ma VM (accès internet depuis l'invité, configuration du bridge) ont aussi demandé beaucoup de débogage.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>Je maîtrise maintenant les commandes essentielles Linux pour l'administration système, la gestion des services, et la configuration réseau de base. J'ai aussi compris la philosophie Unix : tout est fichier, et chaque service a son fichier de configuration qu'on peut éditer manuellement.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
+        <!-- AC11.05 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#adm05">
@@ -385,11 +479,34 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="adm05" class="accordion-collapse collapse" data-bs-parent="#acc-administrer">
             <div class="accordion-body">
-              Diagnostiquer des pannes réseau (câblage, configuration, protocoles), utiliser des outils de test (ping, traceroute, Wireshark) et rédiger un compte-rendu de dysfonctionnement.
+              <p class="pf-desc">Diagnostiquer des pannes réseau (câblage, configuration, protocoles), utiliser des outils de test (ping, traceroute, Wireshark) et rédiger un compte-rendu de dysfonctionnement.</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>En TP, j'ai diagnostiqué des topologies réseau intentionnellement cassées dans Packet Tracer : mauvaise configuration de VLAN, routes manquantes, adresses IP incorrectes. J'ai utilisé ping, traceroute et les captures Wireshark pour localiser les pannes.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>Un réseau qui tombe coûte de l'argent à l'entreprise. Savoir identifier rapidement l'origine d'un dysfonctionnement et le communiquer clairement à son équipe ou à un client est une compétence essentielle dans tous les métiers de l'infrastructure réseau.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Approche méthodique couche par couche : vérification physique (câblage, interfaces up/down), puis couche 2 (MAC, VLAN), puis couche 3 (routes, passerelles), puis couche 4+ (services). Rédaction de comptes-rendus de TP documentant la panne trouvée et la solution appliquée.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>Il était tentant de tester des solutions au hasard plutôt que de diagnostiquer méthodiquement. J'ai dû apprendre à résister à cette tentation et à construire une hypothèse avant d'agir, ce qui prend plus de temps au départ mais est bien plus efficace.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>J'ai intégré une démarche de diagnostic structurée et appris à utiliser les outils de test réseau de façon ciblée. Je suis aussi capable de rédiger un rapport d'incident clair qui permet à quelqu'un d'autre de comprendre le problème et la solution sans avoir été présent.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
+        <!-- AC11.06 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#adm06">
@@ -399,11 +516,33 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="adm06" class="accordion-collapse collapse" data-bs-parent="#acc-administrer">
             <div class="accordion-body">
-              Préparer et déployer un poste de travail (OS, drivers, logiciels), le connecter au réseau, configurer ses paramètres et documenter la procédure réalisée.
+              <p class="pf-desc">Préparer et déployer un poste de travail (OS, drivers, logiciels), le connecter au réseau, configurer ses paramètres et documenter la procédure réalisée.</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>J'ai installé et configuré plusieurs machines virtuelles (Ubuntu, Windows) dans le cadre de mes TPs et de mon projet SAE FitTracker. J'ai documenté chaque étape d'installation pour pouvoir reproduire l'environnement de manière identique.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>Dans un service informatique, le déploiement de postes clients est une tâche récurrente. Savoir le faire proprement et documenter la procédure garantit la reproductibilité et facilite le support technique ultérieur, surtout en cas de panne ou de remplacement matériel.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Installation de l'OS via ISO, configuration des paramètres réseau (IP, masque, passerelle, DNS), installation des logiciels nécessaires, puis rédaction d'une procédure pas-à-pas avec captures d'écran pour chaque étape critique.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>Les problèmes de drivers et de compatibilité sur certaines configurations de VM ont été bloquants, notamment pour la configuration réseau en mode bridge. La documentation des procédures prend aussi du temps qu'on sous-estime souvent.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>J'ai compris l'importance de documenter en temps réel plutôt qu'après coup. J'ai aussi appris à anticiper les problèmes courants d'installation (drivers manquants, conflits de ports) et à m'appuyer sur des procédures reproductibles plutôt que de tout refaire de mémoire.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
       </div>
     </div>
  
@@ -411,7 +550,8 @@ function pfFilter(filter, btn) {
     <div id="pf-connecter" class="pf-comp-block mb-5">
       <p class="pf-section-label">Connecter — Niveau 1 : Découvrir les transmissions et la ToIP</p>
       <div class="accordion" id="acc-connecter">
- 
+
+        <!-- AC12.01 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#con01">
@@ -421,11 +561,34 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="con01" class="accordion-collapse collapse" data-bs-parent="#acc-connecter">
             <div class="accordion-body">
-              Utiliser des instruments (oscilloscope, analyseur de spectre) pour observer des signaux analogiques et numériques, en mesurer les caractéristiques et interpréter les résultats.
+              <p class="pf-desc">Utiliser des instruments (oscilloscope, analyseur de spectre) pour observer des signaux analogiques et numériques, en mesurer les caractéristiques et interpréter les résultats.</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>J'ai réalisé des TPs de mesure de signaux avec un oscilloscope : observation d'un signal sinusoïdal et d'un signal triangulaire, mesure de l'amplitude, de la fréquence, et analyse spectrale via la décomposition en série de Fourier. J'ai aussi travaillé sur l'échantillonnage avec le circuit LF398.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>Tout signal de télécommunication (Wi-Fi, 4G, fibre optique) est à la base un signal physique qu'il faut savoir mesurer et interpréter. Comprendre la forme d'onde et son spectre est indispensable pour diagnostiquer une ligne de transmission dégradée ou configurer un filtre.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Utilisation de l'oscilloscope en mode XY et en mode temporel, réglage des bases de temps et des sensibilités verticales, mesure du déphasage entre deux signaux. Analyse FFT pour visualiser le spectre d'un signal triangulaire et identifier ses harmoniques.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>Le réglage de l'oscilloscope pour stabiliser l'affichage (trigger) était souvent délicat, surtout sur des signaux de faible amplitude. La transposition des calculs de Fourier vus en cours à la réalité des harmoniques mesurés demandait un effort de traduction entre le théorique et le pratique.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>Je sais maintenant utiliser un oscilloscope de façon autonome et en extraire les informations utiles. J'ai aussi compris le théorème de Shannon-Nyquist et son importance pratique : échantillonner en dessous de 2×Fmax provoque un repliement spectral qui détruit l'information.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
+        <!-- AC12.02 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#con02">
@@ -435,11 +598,34 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="con02" class="accordion-collapse collapse" data-bs-parent="#acc-connecter">
             <div class="accordion-body">
-              Comprendre les notions de bande passante, atténuation, débit, bruit, et les modèles de transmission (filtrages, modulations de base).
+              <p class="pf-desc">Comprendre les notions de bande passante, atténuation, débit, bruit, et les modèles de transmission (filtrages, modulations de base).</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>J'ai étudié et modélisé des filtres RC (passe-bas, passe-haut) en calculant leur fonction de transfert, leur fréquence de coupure et leur comportement en fréquence. J'ai tracé les diagrammes de Bode (gain en dB et phase) et comparé les courbes théoriques aux mesures expérimentales.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>Un câble réseau, une antenne ou un amplificateur sont tous des systèmes de transmission avec une bande passante limitée. Comprendre comment modéliser mathématiquement ces systèmes permet de prévoir leur comportement et d'optimiser les liaisons de télécommunication.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Calcul analytique de la fonction de transfert H(f), tracé du diagramme de Bode asymptotique puis réel, mesures en TP pour valider le modèle. Utilisation de la relation Fc = 1/(2πRC) pour relier les composants au comportement fréquentiel.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>La manipulation des nombres complexes pour calculer le module et la phase de H(f) était ardue au début. Passer de l'expression algébrique au tracé de Bode demande de bien maîtriser les asymptotes et les approximations, ce qui n'est pas immédiat.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>J'ai acquis une base solide en traitement du signal appliqué aux télécommunications. Je comprends maintenant pourquoi une liaison filaire a une bande passante limitée et comment un filtre modifie le signal. Ces notions sont directement réutilisables pour comprendre le fonctionnement des modems et des codecs.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
+        <!-- AC12.03 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#con03">
@@ -449,11 +635,34 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="con03" class="accordion-collapse collapse" data-bs-parent="#acc-connecter">
             <div class="accordion-body">
-              Installer et raccorder des supports filaires (cuivre, fibre optique) et sans fil, en respectant les normes de câblage et les bonnes pratiques de déploiement.
+              <p class="pf-desc">Installer et raccorder des supports filaires (cuivre, fibre optique) et sans fil, en respectant les normes de câblage et les bonnes pratiques de déploiement.</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>J'ai réalisé des travaux pratiques de câblage réseau : confection de câbles RJ45 droit et croisé en respectant les normes T568A/B, tests de continuité avec un testeur de câble, et initiation au raccordement de fibres optiques en salle de TP.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>Avant de configurer un réseau logiciellement, il faut que l'infrastructure physique soit correctement installée. Un mauvais câblage est souvent la cause première des pannes réseau et peut être très difficile à diagnostiquer sans connaître les bonnes pratiques de déploiement.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Utilisation d'une pince à sertir pour les câbles cuivre, respect de l'ordre des fils selon la norme EIA/TIA-568, vérification avec un testeur de câble RJ45. Pour la fibre, observation des techniques de clivage et d'épissure par fusion.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>Maintenir l'ordre des fils de cuivre lors du sertissage tout en insérant le connecteur RJ45 demande de la dextérité. Mes premiers câbles présentaient des erreurs de paires (fils inversés) détectées au testeur, ce qui m'a obligé à tout refaire.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>Je sais maintenant confectionner et tester un câble réseau cuivre dans les règles de l'art. J'ai aussi compris les différences pratiques entre les types de câbles (droit, croisé, console) et quand utiliser l'un ou l'autre selon l'équipement à raccorder.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
+        <!-- AC12.04 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#con04">
@@ -463,11 +672,34 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="con04" class="accordion-collapse collapse" data-bs-parent="#acc-connecter">
             <div class="accordion-body">
-              Mettre en service des équipements de téléphonie sur IP (softphones, IPBX) et configurer les paramètres SIP de base pour établir des communications.
+              <p class="pf-desc">Mettre en service des équipements de téléphonie sur IP (softphones, IPBX) et configurer les paramètres SIP de base pour établir des communications.</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>J'ai configuré un scénario de ToIP dans Packet Tracer avec des téléphones IP Cisco, en paramétrant un IPBX (Call Manager Express) et en enregistrant les postes via le protocole SCCP. J'ai testé l'établissement d'appels entre postes sur des VLANs voix dédiés.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>La ToIP a remplacé la téléphonie traditionnelle dans la quasi-totalité des entreprises. Comprendre comment fonctionne SIP et comment les téléphones IP s'enregistrent sur un IPBX est une compétence directement valorisable en alternance et en entreprise.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Configuration du VLAN voix sur les switchs (commande <code>switchport voice vlan</code>), paramétrage du Call Manager Express en CLI Cisco IOS, attribution des numéros de postes et vérification de l'enregistrement des téléphones. Analyse des trames SIP avec Wireshark pour comprendre la séquence d'établissement d'appel.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>La configuration du VLAN voix en parallèle du VLAN données sur les mêmes ports de switch était complexe. Il fallait bien comprendre la notion de port en mode access avec VLAN voix supplémentaire, ce qui diffère de la configuration VLAN classique.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>J'ai compris le fonctionnement de base de la ToIP : pourquoi on sépare la voix des données dans des VLANs distincts (QoS, sécurité), comment un téléphone IP s'enregistre sur un serveur SIP, et comment lire une capture SIP pour diagnostiquer un problème d'appel.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
+        <!-- AC12.05 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#con05">
@@ -477,11 +709,33 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="con05" class="accordion-collapse collapse" data-bs-parent="#acc-connecter">
             <div class="accordion-body">
-              Rédiger une documentation technique claire, présenter oralement une solution ou un incident, et adapter son niveau de langage selon l'interlocuteur (technicien ou non-technicien).
+              <p class="pf-desc">Rédiger une documentation technique claire, présenter oralement une solution ou un incident, et adapter son niveau de langage selon l'interlocuteur (technicien ou non-technicien).</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>J'ai rédigé des comptes-rendus de TP, documenté mes procédures d'installation et créé ce portfolio en ligne pour présenter mes compétences à des recruteurs. J'ai aussi produit du contenu LinkedIn technique vulgarisé, ciblant des professionnels pas toujours spécialistes du sujet traité.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>Un technicien qui ne sait pas expliquer ce qu'il fait est limité dans son évolution. Que ce soit pour rédiger un ticket d'incident, expliquer une panne à un responsable non-technique ou présenter un projet à un client, la communication claire est aussi importante que la compétence technique.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Rédaction de rapports structurés (contexte, actions, résultats, conclusion), présentations orales en cours avec support visuel, et publication de posts LinkedIn sur des sujets techniques (BGP, Wi-Fi 7, DDoS Cloudflare) en vulgarisant pour un public mixte.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>Trouver le bon niveau de détail technique est difficile : trop technique et on perd l'interlocuteur non-spécialiste, pas assez et on manque de crédibilité face à un technicien. Calibrer ce niveau selon l'audience demande de la pratique et de l'observation des retours.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>J'ai appris à structurer mes explications selon une logique "du problème vers la solution" plutôt que "de la théorie vers l'application". J'ai aussi compris qu'un bon document technique doit pouvoir être compris et reproduit par quelqu'un qui n'était pas présent lors de la réalisation.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
       </div>
     </div>
  
@@ -489,7 +743,8 @@ function pfFilter(filter, btn) {
     <div id="pf-programmer" class="pf-comp-block mb-5">
       <p class="pf-section-label">Programmer — Niveau 1 : S'intégrer dans un service informatique</p>
       <div class="accordion" id="acc-programmer">
- 
+
+        <!-- AC13.01 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro01">
@@ -499,11 +754,34 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="pro01" class="accordion-collapse collapse" data-bs-parent="#acc-programmer">
             <div class="accordion-body">
-              Maîtriser l'environnement de travail (IDE, terminal, gestionnaire de fichiers, outils de versioning) pour développer et tester des programmes.
+              <p class="pf-desc">Maîtriser l'environnement de travail (IDE, terminal, gestionnaire de fichiers, outils de versioning) pour développer et tester des programmes.</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>J'ai mis en place un environnement de développement complet pour mon projet SAE FitTracker : VS Code avec extensions Python, terminal Linux, Git pour le versioning, Docker pour la conteneurisation, et DBeaver pour administrer la base de données PostgreSQL.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>Un développeur ou technicien efficace n'est pas celui qui écrit le meilleur code brut, mais celui qui maîtrise son environnement de travail. Des outils bien configurés accélèrent le développement, réduisent les erreurs et facilitent la collaboration avec d'autres développeurs.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Installation et configuration de VS Code (linting Python, formatage automatique), apprentissage des raccourcis clavier essentiels, utilisation du terminal intégré, configuration de Git (nom, email, SSH key), mise en place de Docker Compose pour orchestrer les services de mon application.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>La configuration de Docker sur ma VM Ubuntu a posé des problèmes de droits et de réseau. La courbe d'apprentissage de Git (notamment les conflits de merge et la gestion des branches) était aussi plus raide que prévu.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>Je maîtrise maintenant un environnement de développement professionnel complet. Je suis à l'aise avec le terminal Linux, Git, VS Code et Docker, des outils qui sont standards dans l'industrie et directement utilisables en entreprise ou en alternance.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
+        <!-- AC13.02 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro02">
@@ -513,11 +791,34 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="pro02" class="accordion-collapse collapse" data-bs-parent="#acc-programmer">
             <div class="accordion-body">
-              Comprendre le flux d'exécution d'un programme existant, identifier et corriger des bugs, et faire évoluer le code selon de nouveaux besoins.
+              <p class="pf-desc">Comprendre le flux d'exécution d'un programme existant, identifier et corriger des bugs, et faire évoluer le code selon de nouveaux besoins.</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>Dans le cadre de mes cours de Python et de mon projet SAE FitTracker, j'ai lu, débogué et modifié des programmes existants : correction de bugs dans des scripts Python fournis en TP, ajout de fonctionnalités à une application Flask de base, et adaptation de code trouvé en ligne à mes besoins spécifiques.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>En entreprise, on travaille rarement sur du code vierge : on reprend du code existant, on le maintient, on l'adapte. Savoir lire du code inconnu et le modifier sans tout casser est une compétence fondamentale pour tout développeur ou technicien informatique.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Lecture méthodique du code en partant du point d'entrée (main, route Flask), utilisation du débogueur VS Code pour suivre l'exécution pas à pas, ajout de prints stratégiques pour identifier les valeurs de variables, et consultation de la documentation officielle Python/Flask.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>Comprendre du code écrit par quelqu'un d'autre (ou par soi-même il y a quelques semaines) sans commentaires est difficile. Les erreurs de type en Python et les problèmes de scope de variables m'ont souvent bloqué plus longtemps que prévu.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>J'ai compris l'importance des commentaires et d'une nomenclature claire dans le code. J'ai aussi développé un réflexe de débogage structuré : isoler le problème, reproduire l'erreur de façon minimale, tester une hypothèse à la fois plutôt que de changer plusieurs choses simultanément.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
+        <!-- AC13.03 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro03">
@@ -527,11 +828,34 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="pro03" class="accordion-collapse collapse" data-bs-parent="#acc-programmer">
             <div class="accordion-body">
-              Implémenter un algorithme (tri, recherche, traitement de données) en Python, Bash ou C selon le contexte, en respectant la syntaxe et les conventions du langage.
+              <p class="pf-desc">Implémenter un algorithme (tri, recherche, traitement de données) en Python, Bash ou C selon le contexte, en respectant la syntaxe et les conventions du langage.</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>J'ai implémenté en Python des algorithmes de tri (tri à bulles, tri par insertion) et de recherche vus en cours d'algorithmique, ainsi que des scripts Bash pour l'automatisation de tâches systèmes (sauvegarde de fichiers, monitoring de services). J'ai aussi codé la logique métier de FitTracker (calcul de macros, suivi de séances).</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>Passer d'un algorithme abstrait (pseudocode, organigramme) à du code fonctionnel dans un langage réel est la compétence centrale du développeur. C'est aussi utile pour l'administrateur réseau qui doit automatiser des tâches répétitives via des scripts Bash ou Python.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Traduction pas à pas de l'algorithme en pseudocode vers Python, en respectant l'indentation (critique en Python), les structures de contrôle et les types de données. Pour Bash, apprentissage de la syntaxe spécifique (variables, boucles, conditions) qui diffère fortement des langages classiques.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>La syntaxe Bash est très particulière (espaces autour des opérateurs, guillemets, gestion des variables) et source de nombreuses erreurs au début. En Python, les erreurs d'indentation et la gestion des listes mutables vs immuables m'ont aussi posé problème.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>Je suis capable de traduire un algorithme en Python de façon autonome et de scripter des tâches basiques en Bash. J'ai aussi compris que la complexité algorithmique (O(n), O(n²)) a un impact réel sur les performances, ce qui m'a rendu plus attentif au choix de mes structures de données.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
+        <!-- AC13.04 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro04">
@@ -541,11 +865,34 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="pro04" class="accordion-collapse collapse" data-bs-parent="#acc-programmer">
             <div class="accordion-body">
-              Comprendre le fonctionnement d'un serveur web (HTTP/HTTPS), les langages front-end (HTML, CSS) et les bases d'un CMS ou d'un framework simple.
+              <p class="pf-desc">Comprendre le fonctionnement d'un serveur web (HTTP/HTTPS), les langages front-end (HTML, CSS) et les bases d'un CMS ou d'un framework simple.</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>J'ai conçu et développé ce portfolio en HTML/CSS/JS en partant d'un template Bootstrap, que j'ai largement modifié et personnalisé. J'ai aussi développé une application web complète avec Flask (Python) pour mon SAE FitTracker, comprenant des routes HTTP, des templates Jinja2 et une connexion à une base de données PostgreSQL.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>Le web est omniprésent dans les infrastructures réseau modernes : portails d'administration, interfaces de monitoring, services internes. Comprendre comment fonctionne un serveur HTTP et comment une page web est servie est indispensable pour administrer et sécuriser ces services.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Développement HTML/CSS avec VS Code, inspection des éléments avec les DevTools du navigateur, utilisation du framework Bootstrap 5 pour la mise en page responsive. Côté serveur : Flask pour le routing et la logique métier, Jinja2 pour les templates dynamiques, PostgreSQL pour la persistance des données.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>La mise en page CSS responsive (adaptation mobile/desktop) était souvent source de frustration : un élément parfait sur grand écran se cassait sur mobile. La gestion des sessions Flask et l'authentification utilisateur m'ont aussi demandé beaucoup de recherches.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>Je comprends maintenant le cycle complet requête/réponse HTTP, le rôle de chaque couche dans une application web (front, back, BDD), et comment déployer un serveur web fonctionnel. J'ai aussi acquis des bases solides en HTML/CSS qui me permettent de personnaliser n'importe quelle interface web.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
+        <!-- AC13.05 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro05">
@@ -555,11 +902,34 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="pro05" class="accordion-collapse collapse" data-bs-parent="#acc-programmer">
             <div class="accordion-body">
-              Identifier les besoins de stockage (fichiers plats, bases de données), choisir une solution adaptée et justifier techniquement ce choix.
+              <p class="pf-desc">Identifier les besoins de stockage (fichiers plats, bases de données), choisir une solution adaptée et justifier techniquement ce choix.</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>Pour mon projet SAE FitTracker, j'ai choisi et mis en place une base de données relationnelle PostgreSQL pour stocker les utilisateurs, leurs séances d'entraînement et leurs repas. J'ai conçu le schéma de base de données (tables, clés primaires/étrangères) et écrit les requêtes SQL nécessaires.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>Chaque application a des besoins de stockage différents. Choisir un fichier CSV, une base SQL ou une base NoSQL n'est pas anodin : cela impacte les performances, la scalabilité et la maintenabilité. Savoir argumenter ce choix est une compétence attendue dès le niveau technicien.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Analyse des besoins (données structurées, relations entre entités, requêtes complexes) → choix de PostgreSQL (SGBD relationnel robuste, open source). Modélisation UML (diagramme entité-relation), création des tables en SQL, intégration avec Flask via SQLAlchemy (ORM).</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>La configuration de PostgreSQL dans Docker et la connexion depuis Flask ont été laborieuses (variables d'environnement, chaîne de connexion, migrations de schéma). La conception du schéma relationnel, notamment les cardinalités entre tables, demandait aussi de bien réfléchir en amont.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>Je maîtrise les bases du SQL (SELECT, INSERT, JOIN, WHERE) et comprends les principes de normalisation d'une base de données. J'ai aussi appris à utiliser un ORM (SQLAlchemy) qui simplifie l'interaction entre Python et la base de données tout en préservant la sécurité (protection contre les injections SQL).</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
+        <!-- AC13.06 -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro06">
@@ -569,16 +939,88 @@ function pfFilter(filter, btn) {
           </h2>
           <div id="pro06" class="accordion-collapse collapse" data-bs-parent="#acc-programmer">
             <div class="accordion-body">
-              Utiliser Git pour versionner son code, travailler en équipe sur un dépôt partagé, et respecter les bonnes pratiques de collaboration (commits, branches, merge requests).
+              <p class="pf-desc">Utiliser Git pour versionner son code, travailler en équipe sur un dépôt partagé, et respecter les bonnes pratiques de collaboration (commits, branches, merge requests).</p>
+              <div class="pf-details-grid">
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-check2-circle me-2"></i>Ce que j'ai fait</h6>
+                  <p>J'ai utilisé Git et GitHub pour versionner l'ensemble de mes projets, dont ce portfolio hébergé sur GitHub Pages. J'ai travaillé avec des branches pour isoler les développements en cours, rédigé des messages de commit descriptifs et géré les conflits lors de fusions de branches.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-bullseye me-2"></i>Pourquoi je l'ai fait</h6>
+                  <p>Git est l'outil de versioning standard dans toutes les équipes de développement. Sans Git, travailler à plusieurs sur le même code est chaotique et le risque de perdre du travail est élevé. C'est aussi un outil indispensable pour montrer son travail à un recruteur via GitHub.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-tools me-2"></i>Comment je l'ai fait</h6>
+                  <p>Utilisation des commandes Git de base (<code>init</code>, <code>add</code>, <code>commit</code>, <code>push</code>, <code>pull</code>, <code>branch</code>, <code>merge</code>) en ligne de commande, création de dépôts GitHub, configuration des GitHub Pages pour le déploiement automatique du portfolio.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-exclamation-triangle me-2"></i>Mes difficultés</h6>
+                  <p>Les conflits de merge lors de fusions de branches étaient déstabilisants au début : comprendre ce que Git attendait de moi et comment résoudre le conflit manuellement sans casser le code existant a demandé plusieurs tentatives et lectures de documentation.</p>
+                </div>
+                <div class="pf-detail">
+                  <h6 class="pf-detail-title"><i class="bi bi-mortarboard me-2"></i>Ce que j'ai appris</h6>
+                  <p>Je maîtrise le workflow Git standard (feature branch → commit → push → merge) et comprends pourquoi chaque étape est importante. J'ai aussi compris la valeur d'un historique Git propre : des commits atomiques et bien décrits permettent de comprendre l'évolution d'un projet et de revenir en arrière en cas de problème.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
- 
+
       </div>
     </div>
  
   </div>
 </section>
+
+<style>
+/* ===== PORTFOLIO DETAIL SECTIONS ===== */
+.pf-desc {
+  color: #555;
+  margin-bottom: 1.2rem;
+  font-style: italic;
+  border-left: 3px solid #dee2e6;
+  padding-left: 12px;
+}
+
+.pf-details-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pf-detail {
+  border-left: 3px solid var(--accent-color, #0d6efd);
+  padding: 0.6rem 1rem;
+  background: rgba(13, 110, 253, 0.04);
+  border-radius: 0 6px 6px 0;
+}
+
+.pf-detail-title {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--accent-color, #0d6efd);
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.pf-detail p {
+  margin-bottom: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Couleur par catégorie */
+#pf-administrer .pf-detail { border-left-color: #dc3545; background: rgba(220,53,69,0.04); }
+#pf-administrer .pf-detail-title { color: #dc3545; }
+
+#pf-connecter .pf-detail { border-left-color: #fd7e14; background: rgba(253,126,20,0.04); }
+#pf-connecter .pf-detail-title { color: #fd7e14; }
+
+#pf-programmer .pf-detail { border-left-color: #ffc107; background: rgba(255,193,7,0.06); }
+#pf-programmer .pf-detail-title { color: #b38600; }
+</style>
 
    
   </main>
