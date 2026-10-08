@@ -36,17 +36,14 @@
   ======================================================== -->
 </head>
 <script>
-function pfFilter(filter, btn) {
-  document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('filter-active'));
-  btn.classList.add('filter-active');
-  ['administrer','connecter','programmer'].forEach(key => {
-    const el = document.getElementById('pf-' + key);
-    if (filter === 'all' || filter === key) {
-      el.classList.remove('hidden');
-    } else {
-      el.classList.add('hidden');
-    }
-  });
+function pfFilter(key, btn) {
+  const wasActive = btn.classList.contains('active');
+  document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.pf-comp-block').forEach(el => el.classList.add('hidden'));
+  if (!wasActive) {
+    btn.classList.add('active');
+    document.getElementById('pf-' + key).classList.remove('hidden');
+  }
 }
 </script>
 <body class="index-page">
@@ -124,7 +121,7 @@ function pfFilter(filter, btn) {
               <div class="col-lg-6">
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>Date de naissance:</strong> <span>15 Septembre 2007</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>https://derisbourgesteban.github.io/portfolio-SAE14/</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span><a href="https://derisbourgesteban.github.io/site/">derisbourgesteban.github.io/site</a></span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Téléphone</strong> <span>+33 06 74 87 37 02</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Ville:</strong> <span>Saint-Pol-Sur-Ternoise, France</span></li>
                 </ul>
@@ -252,10 +249,10 @@ function pfFilter(filter, btn) {
 
             <h3 class="resume-title">Parcours Scolaire</h3>
             <div class="resume-item">
-              <h4>Brevet &amp; Baccalauréat</h4>
+              <h4>Baccalauréat</h4>
               <h5>2022-2025</h5>
-              <p><em>Auxi-Le-Chateau &amp; Saint-Pol-Sur-Ternoise</em></p>
-              <p>Suite à l'obtention de mon brevet mention Très bien, j'ai intégré le lycée Albert Chatelet à Saint-Pol-Sur-Ternoise pour y faire un Baccalauréat Technologique en STI2D Spécialité Systèmes Informatiques et Numériques, que j'obtiendrai avec une mention Assez Bien. </p>
+              <p><em>Saint-Pol-Sur-Ternoise</em></p>
+              <p>J'ai intégré le lycée Albert Chatelet à Saint-Pol-Sur-Ternoise pour y faire un Baccalauréat Technologique en STI2D Spécialité Systèmes Informatiques et Numériques, que j'obtiendrai avec une mention Assez Bien. </p>
             </div><!-- Edn Resume Item -->
 
             <div class="resume-item">
@@ -309,15 +306,14 @@ function pfFilter(filter, btn) {
   <div class="container">
  
     <!-- Filtres -->
-    <div class="d-flex flex-wrap gap-2 justify-content-center mb-4" data-aos="fade-up" data-aos-delay="100">
-      <button class="pf-btn filter-active" onclick="pfFilter('all', this)">Tout</button>
-      <button class="pf-btn" onclick="pfFilter('administrer', this)">Administrer</button>
-      <button class="pf-btn" onclick="pfFilter('connecter', this)">Connecter</button>
-      <button class="pf-btn" onclick="pfFilter('programmer', this)">Programmer</button>
+    <div class="d-flex flex-wrap gap-3 justify-content-center mb-4" data-aos="fade-up" data-aos-delay="100">
+      <button type="button" class="pf-btn" onclick="pfFilter('administrer', this)"><i class="bi bi-hdd-network"></i> Administrer</button>
+      <button type="button" class="pf-btn" onclick="pfFilter('connecter', this)"><i class="bi bi-broadcast"></i> Connecter</button>
+      <button type="button" class="pf-btn" onclick="pfFilter('programmer', this)"><i class="bi bi-code-slash"></i> Programmer</button>
     </div>
  
     <!-- ADMINISTRER -->
-    <div id="pf-administrer" class="pf-comp-block mb-5">
+    <div id="pf-administrer" class="pf-comp-block hidden mb-5">
       <p class="pf-section-label">Administrer — Niveau 1 : Assister l'administrateur du réseau</p>
       <div class="accordion" id="acc-administrer">
  
@@ -610,7 +606,7 @@ function pfFilter(filter, btn) {
     </div>
  
     <!-- CONNECTER -->
-    <div id="pf-connecter" class="pf-comp-block mb-5">
+    <div id="pf-connecter" class="pf-comp-block hidden mb-5">
       <p class="pf-section-label">Connecter — Niveau 1 : Découvrir les transmissions et la ToIP</p>
       <div class="accordion" id="acc-connecter">
  
@@ -849,7 +845,7 @@ function pfFilter(filter, btn) {
     </div>
  
     <!-- PROGRAMMER -->
-    <div id="pf-programmer" class="pf-comp-block mb-5">
+    <div id="pf-programmer" class="pf-comp-block hidden mb-5">
       <p class="pf-section-label">Programmer — Niveau 1 : S'intégrer dans un service informatique</p>
       <div class="accordion" id="acc-programmer">
  
@@ -1139,6 +1135,41 @@ function pfFilter(filter, btn) {
 </section>
  
 <style>
+/* ===== BOUTONS DE CATÉGORIE ===== */
+.pf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  border: 2px solid #149ddd;
+  border-radius: 50px;
+  background: #fff;
+  color: #149ddd;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(20, 157, 221, 0.12);
+}
+.pf-btn i { font-size: 1.05rem; }
+.pf-btn:hover {
+  background: rgba(20, 157, 221, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(20, 157, 221, 0.2);
+}
+.pf-btn.active {
+  background: #149ddd;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(20, 157, 221, 0.35);
+}
+.pf-btn:focus-visible { outline: 3px solid rgba(20, 157, 221, 0.4); outline-offset: 2px; }
+
+/* Catégorie masquée tant qu'on n'a pas cliqué */
+.pf-comp-block.hidden { display: none; }
+.pf-comp-block { animation: pfFade 0.35s ease; }
+@keyframes pfFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
 /* ===== PORTFOLIO DETAIL SECTIONS ===== */
 .pf-desc {
   color: #555;
