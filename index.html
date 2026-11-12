@@ -37,14 +37,26 @@
 </head>
 <script>
 function pfFilter(key, btn) {
-  const wasActive = btn.classList.contains('active');
-  document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.pf-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
   document.querySelectorAll('.pf-comp-block').forEach(el => el.classList.add('hidden'));
-  if (!wasActive) {
-    btn.classList.add('active');
-    document.getElementById('pf-' + key).classList.remove('hidden');
-  }
+  btn.classList.add('active');
+  btn.setAttribute('aria-pressed', 'true');
+  document.getElementById('pf-' + key).classList.remove('hidden');
 }
+// Indique sur chaque AC le nombre de documents joints, et repère les fiches pas encore rédigées
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.pf-comp-block .accordion-item').forEach(item => {
+    const n = item.querySelectorAll('.pf-preuve-link').length;
+    const tag = document.createElement('span');
+    tag.className = 'pf-count' + (n ? '' : ' pf-count-empty');
+    tag.textContent = n ? n + (n > 1 ? ' documents' : ' document') : 'à venir';
+    item.querySelector('.accordion-button').appendChild(tag);
+    const texts = item.querySelectorAll('.pf-detail p');
+    if (texts.length && [...texts].every(t => t.querySelector('.pf-todo'))) {
+      item.querySelector('.pf-details-grid').classList.add('pf-empty');
+    }
+  });
+});
 </script>
 <body class="index-page">
 
@@ -307,16 +319,16 @@ function pfFilter(key, btn) {
  
     <!-- Filtres -->
     <div class="d-flex flex-wrap gap-3 justify-content-center mb-4" data-aos="fade-up" data-aos-delay="100">
-      <button type="button" class="pf-btn" onclick="pfFilter('administrer', this)"><i class="bi bi-hdd-network"></i> Administrer</button>
-      <button type="button" class="pf-btn" onclick="pfFilter('connecter', this)"><i class="bi bi-broadcast"></i> Connecter</button>
-      <button type="button" class="pf-btn" onclick="pfFilter('programmer', this)"><i class="bi bi-code-slash"></i> Programmer</button>
-      <button type="button" class="pf-btn" onclick="pfFilter('securiser', this)"><i class="bi bi-shield-lock"></i> Sécuriser</button>
-      <button type="button" class="pf-btn" onclick="pfFilter('surveiller', this)"><i class="bi bi-eye"></i> Surveiller</button>
+      <button type="button" class="pf-btn active" data-pf="administrer" aria-pressed="true" onclick="pfFilter('administrer', this)"><i class="bi bi-hdd-network"></i> Administrer</button>
+      <button type="button" class="pf-btn" data-pf="connecter" onclick="pfFilter('connecter', this)"><i class="bi bi-broadcast"></i> Connecter</button>
+      <button type="button" class="pf-btn" data-pf="programmer" onclick="pfFilter('programmer', this)"><i class="bi bi-code-slash"></i> Programmer</button>
+      <button type="button" class="pf-btn" data-pf="securiser" onclick="pfFilter('securiser', this)"><i class="bi bi-shield-lock"></i> Sécuriser</button>
+      <button type="button" class="pf-btn" data-pf="surveiller" onclick="pfFilter('surveiller', this)"><i class="bi bi-eye"></i> Surveiller</button>
     </div>
  
     <!-- ADMINISTRER -->
-    <div id="pf-administrer" class="pf-comp-block hidden mb-5">
-      <p class="pf-section-label">Administrer — Niveau 1 : Assister l'administrateur du réseau</p>
+    <div id="pf-administrer" class="pf-comp-block mb-5">
+      <div class="pf-comp-head"><h3 class="pf-comp-title">Administrer</h3><p class="pf-comp-level">Niveau 1 : Assister l'administrateur du réseau</p></div>
       <div class="accordion" id="acc-administrer">
  
         <!-- AC11.01 -->
@@ -356,10 +368,10 @@ function pfFilter(key, btn) {
                 <h6 class="pf-preuves-title"><i class="bi bi-paperclip me-2"></i>Preuves & Documents</h6>
                 <div class="pf-preuves-links">
                   <a href="https://docs.google.com/document/d/1TSvyvJEIngiVwY5keFbpN4GvL66MFEcvkfYb-sFM8rA/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R104 — TP3 : Signal rectangulaire, valeurs moyenne &amp; efficace
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R104 · TP3</span><span class="pf-doc-title">Signal rectangulaire, valeurs moyenne &amp; efficace</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://docs.google.com/document/d/1p5YsCsn9t5G1MIAG4zJwfUGzEKhyo_pUKZWCCTQznag/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R214 — TP7 : Lois des nœuds &amp; des mailles résolues avec Scilab
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R214 · TP7</span><span class="pf-doc-title">Lois des nœuds &amp; des mailles résolues avec Scilab</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -404,10 +416,10 @@ function pfFilter(key, btn) {
                 <h6 class="pf-preuves-title"><i class="bi bi-paperclip me-2"></i>Preuves & Documents</h6>
                 <div class="pf-preuves-links">
                   <a href="https://docs.google.com/document/d/1-EHg_PDsYi7J1rERzXOuIH0Fqx4IGnUoiXKKj7W_FNU/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R102 — TP2 : Protocole ARP &amp; analyse de trames ICMP (Wireshark)
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R102 · TP2</span><span class="pf-doc-title">Protocole ARP &amp; analyse de trames ICMP (Wireshark)</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://docs.google.com/document/d/1F_KJH_ZCvLNgRGGxic_aW2R3Al9DV31IOGfZGbnpL50/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R103 — TP3 : Analyse de trames DNS, DHCP &amp; SSH
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R103 · TP3</span><span class="pf-doc-title">Analyse de trames DNS, DHCP &amp; SSH</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -452,16 +464,16 @@ function pfFilter(key, btn) {
                 <h6 class="pf-preuves-title"><i class="bi bi-paperclip me-2"></i>Preuves & Documents</h6>
                 <div class="pf-preuves-links">
                   <a href="https://docs.google.com/document/d/1QHckkanvDr4gcJg1Vli3t3OUOLJ484JaZWJmSaKMRls/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R101 — TP6 : DHCP, DNS, passerelle &amp; tables de routage
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R101 · TP6</span><span class="pf-doc-title">DHCP, DNS, passerelle &amp; tables de routage</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://docs.google.com/document/d/1dxevcBQYrBNjPj2xgbMFkp9-nmkFaZMtwgGAnzr2Yn4/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R203 — TP2 : Installation d'un serveur DHCP
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R203 · TP2</span><span class="pf-doc-title">Installation d'un serveur DHCP</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://drive.google.com/file/d/1Vbi5rqmR3W6Fnug91tIvIyoRlGAShpgn/view?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R201 — TP7 : Routage statique &amp; ACL Cisco
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R201 · TP7</span><span class="pf-doc-title">Routage statique &amp; ACL Cisco</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://docs.google.com/document/d/1irZ4Pfh91L1Cua3vojDpD2oWZoZjuajB4WusUF9urHc/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R301 — TP1 : VLAN, trunks, HSRP &amp; OSPF
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R301 · TP1</span><span class="pf-doc-title">VLAN, trunks, HSRP &amp; OSPF</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -506,13 +518,13 @@ function pfFilter(key, btn) {
                 <h6 class="pf-preuves-title"><i class="bi bi-paperclip me-2"></i>Preuves & Documents</h6>
                 <div class="pf-preuves-links">
                   <a href="https://docs.google.com/document/d/1ESOd3QZOYQ_0y6yVUdSeZNT6ZasdTCi7yQ2fD5u6SRQ/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R108 — TP4 : Filtres Linux (head, sort, cut, grep)
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R108 · TP4</span><span class="pf-doc-title">Filtres Linux (head, sort, cut, grep)</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://docs.google.com/document/d/1rEH6K3Gi2IZDCfrc65hbNLgCBBdnKbqhlg7lWlAAoGQ/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R108 — TP5 : Processus &amp; variables du shell
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R108 · TP5</span><span class="pf-doc-title">Processus &amp; variables du shell</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://docs.google.com/document/d/1rv6rACO1otdJ4eEGFhxukHMCnczrupTpGfMCWydwXLk/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R202 — TP3-4-5 : Virtualisation (ESXi) &amp; Docker
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R202 · TP3-4-5</span><span class="pf-doc-title">Virtualisation (ESXi) &amp; Docker</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -557,7 +569,7 @@ function pfFilter(key, btn) {
                 <h6 class="pf-preuves-title"><i class="bi bi-paperclip me-2"></i>Preuves & Documents</h6>
                 <div class="pf-preuves-links">
                   <a href="https://docs.google.com/document/d/1HPByrEyN3nv4CS3Ff-kIyUNsSzodgJsg9kgQ24qUKMo/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R301 — TP4 : Contrôleur Wi-Fi Cisco &amp; dépannage de la borne
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R301 · TP4</span><span class="pf-doc-title">Contrôleur Wi-Fi Cisco &amp; dépannage de la borne</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -613,7 +625,7 @@ function pfFilter(key, btn) {
  
     <!-- CONNECTER -->
     <div id="pf-connecter" class="pf-comp-block hidden mb-5">
-      <p class="pf-section-label">Connecter — Niveau 1 : Découvrir les transmissions et la ToIP</p>
+      <div class="pf-comp-head"><h3 class="pf-comp-title">Connecter</h3><p class="pf-comp-level">Niveau 1 : Découvrir les transmissions et la ToIP</p></div>
       <div class="accordion" id="acc-connecter">
  
         <!-- AC12.01 -->
@@ -653,13 +665,13 @@ function pfFilter(key, btn) {
                 <h6 class="pf-preuves-title"><i class="bi bi-paperclip me-2"></i>Preuves & Documents</h6>
                 <div class="pf-preuves-links">
                   <a href="https://docs.google.com/document/d/1WvuNWHruuw6jtAxf5Zo2vt6zrhlABVbmab1YtMcPW9w/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R104 — TP2 : Mesures à l'oscilloscope (période, amplitude)
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R104 · TP2</span><span class="pf-doc-title">Mesures à l'oscilloscope (période, amplitude)</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://docs.google.com/document/d/1TSvyvJEIngiVwY5keFbpN4GvL66MFEcvkfYb-sFM8rA/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R104 — TP3 : Signal rectangulaire, valeurs moyenne &amp; efficace
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R104 · TP3</span><span class="pf-doc-title">Signal rectangulaire, valeurs moyenne &amp; efficace</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://docs.google.com/document/d/1yQJeBFS7cnDCPgErV-EWpk-E678OzQ7IlwMsGgJsaKQ/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R305 — TP1 : Analyse spectrale (sinus, carré, FM)
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R305 · TP1</span><span class="pf-doc-title">Analyse spectrale (sinus, carré, FM)</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -704,10 +716,10 @@ function pfFilter(key, btn) {
                 <h6 class="pf-preuves-title"><i class="bi bi-paperclip me-2"></i>Preuves & Documents</h6>
                 <div class="pf-preuves-links">
                   <a href="https://docs.google.com/document/d/1VvLYsRuDONTrI8UZkNwPkfK2vxzr5wCYfS6T8_z9azc/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>SAÉ 1.3 — Séance 6 : Paramètres linéiques d'un câble coaxial
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">SAÉ 1.3 · Séance 6</span><span class="pf-doc-title">Paramètres linéiques d'un câble coaxial</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://docs.google.com/document/d/1bjqpByjlxEwxaPlIAQSD1n6KkNWuKmU-E72Ptits_-4/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R305 — TP3-4 : Codages NRZ / RZ &amp; densité spectrale (Simulink)
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R305 · TP3-4</span><span class="pf-doc-title">Codages NRZ / RZ &amp; densité spectrale (Simulink)</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -849,7 +861,7 @@ function pfFilter(key, btn) {
  
     <!-- PROGRAMMER -->
     <div id="pf-programmer" class="pf-comp-block hidden mb-5">
-      <p class="pf-section-label">Programmer — Niveau 1 : S'intégrer dans un service informatique</p>
+      <div class="pf-comp-head"><h3 class="pf-comp-title">Programmer</h3><p class="pf-comp-level">Niveau 1 : S'intégrer dans un service informatique</p></div>
       <div class="accordion" id="acc-programmer">
  
         <!-- AC13.01 -->
@@ -889,10 +901,10 @@ function pfFilter(key, btn) {
                 <h6 class="pf-preuves-title"><i class="bi bi-paperclip me-2"></i>Preuves & Documents</h6>
                 <div class="pf-preuves-links">
                   <a href="https://docs.google.com/document/d/1ESOd3QZOYQ_0y6yVUdSeZNT6ZasdTCi7yQ2fD5u6SRQ/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R108 — TP4 : Filtres Linux (head, sort, cut, grep)
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R108 · TP4</span><span class="pf-doc-title">Filtres Linux (head, sort, cut, grep)</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://docs.google.com/document/d/1rEH6K3Gi2IZDCfrc65hbNLgCBBdnKbqhlg7lWlAAoGQ/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R108 — TP5 : Processus &amp; variables du shell
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R108 · TP5</span><span class="pf-doc-title">Processus &amp; variables du shell</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -937,10 +949,10 @@ function pfFilter(key, btn) {
                 <h6 class="pf-preuves-title"><i class="bi bi-paperclip me-2"></i>Preuves & Documents</h6>
                 <div class="pf-preuves-links">
                   <a href="https://docs.google.com/document/d/1SDeOjngGQnoo_jVlG3m1F0MqCZs92Ib8tSdBMdIDmfo/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R102 — TP4 : Forge de paquets avec Scapy (Python)
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R102 · TP4</span><span class="pf-doc-title">Forge de paquets avec Scapy (Python)</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://docs.google.com/document/d/1rMSRWiKtZ9p0ly_rqIXD9s3aLWv8iya401JHeAo6uaQ/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R213 — TP5 : Conditions, boucles &amp; fonctions en Scilab
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R213 · TP5</span><span class="pf-doc-title">Conditions, boucles &amp; fonctions en Scilab</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -985,13 +997,13 @@ function pfFilter(key, btn) {
                 <h6 class="pf-preuves-title"><i class="bi bi-paperclip me-2"></i>Preuves & Documents</h6>
                 <div class="pf-preuves-links">
                   <a href="https://docs.google.com/document/d/1rMSRWiKtZ9p0ly_rqIXD9s3aLWv8iya401JHeAo6uaQ/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R213 — TP5 : Conditions, boucles &amp; fonctions en Scilab
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R213 · TP5</span><span class="pf-doc-title">Conditions, boucles &amp; fonctions en Scilab</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://docs.google.com/document/d/1tETAo2IVKSodkUn6Xf_C-Eida66HmAZy61KVCeiIIYA/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R214 — TP8 : Intégration numérique (rectangles, trapèzes) en Scilab
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R214 · TP8</span><span class="pf-doc-title">Intégration numérique (rectangles, trapèzes) en Scilab</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://drive.google.com/file/d/1XnY9xCN9kcxCCSHLMmHx_t6MYdbbrfKN/view?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R308 — TP2 : Classe Date, exceptions &amp; sérialisation (Python)
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R308 · TP2</span><span class="pf-doc-title">Classe Date, exceptions &amp; sérialisation (Python)</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -1036,10 +1048,10 @@ function pfFilter(key, btn) {
                 <h6 class="pf-preuves-title"><i class="bi bi-paperclip me-2"></i>Preuves & Documents</h6>
                 <div class="pf-preuves-links">
                   <a href="https://docs.google.com/document/d/1_zSJwo2rZ3FLAhCkFvxwp24SMOnf2olXzHkDKMnJTHg/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R203 — TP1 : Serveur web Apache &amp; pile LEMP
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R203 · TP1</span><span class="pf-doc-title">Serveur web Apache &amp; pile LEMP</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://drive.google.com/file/d/1PsMg0K973u4iqAd3woeihVguE5oJXXKf/view?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R209 — Compte rendu : HTTP, Flask, templates &amp; MySQL
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R209 · Compte rendu</span><span class="pf-doc-title">HTTP, Flask, templates &amp; MySQL</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -1084,16 +1096,16 @@ function pfFilter(key, btn) {
                 <h6 class="pf-preuves-title"><i class="bi bi-paperclip me-2"></i>Preuves & Documents</h6>
                 <div class="pf-preuves-links">
                   <a href="https://docs.google.com/document/d/14BQobQhHx6MAweKUmQRajEC7scxBBvn9DyRgkn4KHkU/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R207 — TP1 : Création d'une base PostgreSQL, contraintes &amp; sauvegarde
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R207 · TP1</span><span class="pf-doc-title">Création d'une base PostgreSQL, contraintes &amp; sauvegarde</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://docs.google.com/document/d/1Rq6wiiL4HvA037FmbLXYi72I7iWbiHhr8LHzcvXq2mE/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R207 — TP3 : Requêtes SQL (jointures, agrégats)
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R207 · TP3</span><span class="pf-doc-title">Requêtes SQL (jointures, agrégats)</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://drive.google.com/file/d/1XnY9xCN9kcxCCSHLMmHx_t6MYdbbrfKN/view?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R308 — TP2 : Classe Date, exceptions &amp; sérialisation (Python)
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R308 · TP2</span><span class="pf-doc-title">Classe Date, exceptions &amp; sérialisation (Python)</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://docs.google.com/document/d/1YdRgkSnzu0o4gpAB1kmgn4tjsIFS04JGgPzw2IJJwHw/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R310 — TP1 : Administration PostgreSQL (rôles, droits, pg_dump)
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R310 · TP1</span><span class="pf-doc-title">Administration PostgreSQL (rôles, droits, pg_dump)</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -1149,14 +1161,14 @@ function pfFilter(key, btn) {
  
     <!-- SÉCURISER (2e année) -->
     <div id="pf-securiser" class="pf-comp-block hidden mb-5">
-      <p class="pf-section-label">Sécuriser — Niveau 1 : Sensibiliser aux vulnérabilités d'un système d'information et aux remédiations possibles</p>
+      <div class="pf-comp-head"><h3 class="pf-comp-title">Sécuriser</h3><p class="pf-comp-level">Niveau 1 : Sensibiliser aux vulnérabilités d'un système d'information et aux remédiations possibles</p></div>
       <div class="accordion" id="acc-securiser">
 
         <!-- AC24.01Cyber -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sec01">
-              <span class="pf-badge pf-badge-purple me-2">AC24.01Cyber</span>
+              <span class="pf-badge pf-badge-purple me-2">AC24.01 Cyber</span>
               Connaître et utiliser les bonnes pratiques et les recommandations de cybersécurité
             </button>
           </h2>
@@ -1199,7 +1211,7 @@ function pfFilter(key, btn) {
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sec02">
-              <span class="pf-badge pf-badge-purple me-2">AC24.02Cyber</span>
+              <span class="pf-badge pf-badge-purple me-2">AC24.02 Cyber</span>
               Mettre en œuvre les outils fondamentaux de sécurisation d'une infrastructure du réseau
             </button>
           </h2>
@@ -1232,10 +1244,10 @@ function pfFilter(key, btn) {
                 <h6 class="pf-preuves-title"><i class="bi bi-paperclip me-2"></i>Preuves & Documents</h6>
                 <div class="pf-preuves-links">
                   <a href="https://drive.google.com/file/d/1Vbi5rqmR3W6Fnug91tIvIyoRlGAShpgn/view?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R201 — TP7 : Routage statique &amp; ACL Cisco
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R201 · TP7</span><span class="pf-doc-title">Routage statique &amp; ACL Cisco</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                   <a href="https://docs.google.com/document/d/1JBSXIgd3jDeBIyQuqlIB2K1QMdojcHvY18SrLMVGFzY/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R201 — TP9 : Filtrage Linux (iptables / nftables)
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R201 · TP9</span><span class="pf-doc-title">Filtrage Linux (iptables / nftables)</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -1247,7 +1259,7 @@ function pfFilter(key, btn) {
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sec03">
-              <span class="pf-badge pf-badge-purple me-2">AC24.03Cyber</span>
+              <span class="pf-badge pf-badge-purple me-2">AC24.03 Cyber</span>
               Sécuriser les services
             </button>
           </h2>
@@ -1280,7 +1292,7 @@ function pfFilter(key, btn) {
                 <h6 class="pf-preuves-title"><i class="bi bi-paperclip me-2"></i>Preuves & Documents</h6>
                 <div class="pf-preuves-links">
                   <a href="https://docs.google.com/document/d/1VU_wWo0rPtpRHpvGTKq2UQvx9U01AB3DiqYwPHBoPEQ/edit?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R209 — TP4 : Sécurisation d'un site PHP/MySQL (requêtes préparées)
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R209 · TP4</span><span class="pf-doc-title">Sécurisation d'un site PHP/MySQL (requêtes préparées)</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -1292,7 +1304,7 @@ function pfFilter(key, btn) {
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sec04">
-              <span class="pf-badge pf-badge-purple me-2">AC24.04Cyber</span>
+              <span class="pf-badge pf-badge-purple me-2">AC24.04 Cyber</span>
               Choisir les outils cryptographiques adaptés au besoin fonctionnel du système d'information
             </button>
           </h2>
@@ -1335,7 +1347,7 @@ function pfFilter(key, btn) {
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sec05">
-              <span class="pf-badge pf-badge-purple me-2">AC24.05Cyber</span>
+              <span class="pf-badge pf-badge-purple me-2">AC24.05 Cyber</span>
               Connaître les différents types d'attaque
             </button>
           </h2>
@@ -1368,7 +1380,7 @@ function pfFilter(key, btn) {
                 <h6 class="pf-preuves-title"><i class="bi bi-paperclip me-2"></i>Preuves & Documents</h6>
                 <div class="pf-preuves-links">
                   <a href="https://drive.google.com/file/d/1PsMg0K973u4iqAd3woeihVguE5oJXXKf/view?usp=sharing" target="_blank" rel="noopener" class="pf-preuve-link">
-                    <i class="bi bi-file-earmark-text me-1"></i>R209 — Compte rendu : failles XSS, injection SQL &amp; phishing
+                    <i class="bi bi-file-earmark-text" aria-hidden="true"></i><span class="pf-doc-text"><span class="pf-doc-code">R209 · Compte rendu</span><span class="pf-doc-title">failles XSS, injection SQL &amp; phishing</span></span><i class="bi bi-box-arrow-up-right pf-doc-open" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -1380,7 +1392,7 @@ function pfFilter(key, btn) {
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sec06">
-              <span class="pf-badge pf-badge-purple me-2">AC24.06Cyber</span>
+              <span class="pf-badge pf-badge-purple me-2">AC24.06 Cyber</span>
               Comprendre des documents techniques en anglais
             </button>
           </h2>
@@ -1424,14 +1436,14 @@ function pfFilter(key, btn) {
 
     <!-- SURVEILLER (2e année) -->
     <div id="pf-surveiller" class="pf-comp-block hidden mb-5">
-      <p class="pf-section-label">Surveiller — Niveau 1 : Prendre en main les outils de surveillance et de test du système d'information</p>
+      <div class="pf-comp-head"><h3 class="pf-comp-title">Surveiller</h3><p class="pf-comp-level">Niveau 1 : Prendre en main les outils de surveillance et de test du système d'information</p></div>
       <div class="accordion" id="acc-surveiller">
 
         <!-- AC25.01Cyber -->
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sur01">
-              <span class="pf-badge pf-badge-teal me-2">AC25.01Cyber</span>
+              <span class="pf-badge pf-badge-teal me-2">AC25.01 Cyber</span>
               Administrer les protections contre les logiciels malveillants
             </button>
           </h2>
@@ -1474,7 +1486,7 @@ function pfFilter(key, btn) {
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sur02">
-              <span class="pf-badge pf-badge-teal me-2">AC25.02Cyber</span>
+              <span class="pf-badge pf-badge-teal me-2">AC25.02 Cyber</span>
               Prendre en main des outils de test de pénétration réseau/système
             </button>
           </h2>
@@ -1520,194 +1532,178 @@ function pfFilter(key, btn) {
 </section>
  
 <style>
-/* ===== BOUTONS DE CATÉGORIE ===== */
+/* ===== PORTFOLIO ===== */
+/* Une couleur par compétence, reprise par l'onglet, les fiches et les documents */
+[data-pf="administrer"], #pf-administrer { --pf-c: #c22f3d; --pf-tint: #fdf1f2; --pf-line: #f3cdd1; }
+[data-pf="connecter"],   #pf-connecter   { --pf-c: #c25a00; --pf-tint: #fff4ea; --pf-line: #f9d5b5; }
+[data-pf="programmer"],  #pf-programmer  { --pf-c: #8a6500; --pf-tint: #fff8e1; --pf-line: #f1dd9c; }
+[data-pf="securiser"],   #pf-securiser   { --pf-c: #5f3bb0; --pf-tint: #f5f1fc; --pf-line: #d9cdf1; }
+[data-pf="surveiller"],  #pf-surveiller  { --pf-c: #0f7183; --pf-tint: #edf8fa; --pf-line: #bfe3ea; }
+
+/* Onglets de compétence */
 .pf-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.6rem 1.4rem;
-  border: 2px solid #149ddd;
-  border-radius: 50px;
+  padding: 0.6rem 1.25rem;
+  border: 1.5px solid var(--pf-line);
+  border-radius: 10px;
   background: #fff;
-  color: #149ddd;
+  color: var(--pf-c);
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 2px 6px rgba(20, 157, 221, 0.12);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 .pf-btn i { font-size: 1.05rem; }
-.pf-btn:hover {
-  background: rgba(20, 157, 221, 0.08);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(20, 157, 221, 0.2);
-}
-.pf-btn.active {
-  background: #149ddd;
-  color: #fff;
-  box-shadow: 0 6px 16px rgba(20, 157, 221, 0.35);
-}
-.pf-btn:focus-visible { outline: 3px solid rgba(20, 157, 221, 0.4); outline-offset: 2px; }
+.pf-btn:hover { background: var(--pf-tint); border-color: var(--pf-c); }
+.pf-btn.active { background: var(--pf-c); border-color: var(--pf-c); color: #fff; }
+.pf-btn:focus-visible { outline: 3px solid var(--pf-line); outline-offset: 2px; }
 
-/* Catégorie masquée tant qu'on n'a pas cliqué */
 .pf-comp-block.hidden { display: none; }
-.pf-comp-block { animation: pfFade 0.35s ease; }
-@keyframes pfFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.pf-comp-block { animation: pfFade 0.3s ease; max-width: 920px; margin-inline: auto; }
+@keyframes pfFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .pf-comp-block { animation: none; } .pf-btn, .pf-preuve-link { transition: none; } }
 
-/* ===== PORTFOLIO DETAIL SECTIONS ===== */
-.pf-desc {
-  color: #555;
-  margin-bottom: 1.2rem;
-  font-style: italic;
-  border-left: 3px solid #dee2e6;
-  padding-left: 12px;
+/* En-tête de compétence */
+.pf-comp-head {
+  margin: 2rem 0 1.25rem;
+  padding-left: 1rem;
+  border-left: 4px solid var(--pf-c);
 }
- 
-.pf-details-grid {
-  display: flex;
-  flex-direction: column;
+.pf-comp-title { margin: 0; font-size: 1.5rem; font-weight: 600; color: var(--pf-c); }
+.pf-comp-level { margin: 0.15rem 0 0; color: #5b6470; font-size: 0.95rem; }
+
+/* Fiches AC */
+.pf-comp-block .accordion { --bs-accordion-border-width: 0; --bs-accordion-bg: transparent; display: flex; flex-direction: column; gap: 0.6rem; }
+.pf-comp-block .accordion-item {
+  background: #fff;
+  border: 1px solid #e3e8ee;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.pf-comp-block .accordion-item:has(.accordion-button:not(.collapsed)) { border-color: var(--pf-line); box-shadow: 0 6px 20px rgba(16, 32, 56, 0.06); }
+.pf-comp-block .accordion-button {
   gap: 0.75rem;
-}
- 
-.pf-detail {
-  border-left: 3px solid var(--accent-color, #0d6efd);
-  padding: 0.6rem 1rem;
-  background: rgba(13, 110, 253, 0.04);
-  border-radius: 0 6px 6px 0;
-}
- 
-.pf-detail-title {
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--accent-color, #0d6efd);
-  margin-bottom: 0.3rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
- 
-.pf-detail p {
-  margin-bottom: 0;
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: #444;
-}
- 
-/* Couleur par catégorie */
-#pf-administrer .pf-detail { border-left-color: #dc3545; background: rgba(220,53,69,0.04); }
-#pf-administrer .pf-detail-title { color: #dc3545; }
- 
-#pf-connecter .pf-detail { border-left-color: #fd7e14; background: rgba(253,126,20,0.04); }
-#pf-connecter .pf-detail-title { color: #fd7e14; }
- 
-#pf-programmer .pf-detail { border-left-color: #ffc107; background: rgba(255,193,7,0.06); }
-#pf-programmer .pf-detail-title { color: #b38600; }
- 
-#pf-securiser .pf-detail { border-left-color: #6f42c1; background: rgba(111,66,193,0.04); }
-#pf-securiser .pf-detail-title { color: #6f42c1; }
-
-#pf-surveiller .pf-detail { border-left-color: #17a2b8; background: rgba(23,162,184,0.05); }
-#pf-surveiller .pf-detail-title { color: #138496; }
-
-.pf-badge-purple { background: rgba(111,66,193,0.12); color: #59339d; }
-.pf-badge-teal { background: rgba(23,162,184,0.14); color: #0f6f7f; }
-
-/* Texte en attente de contenu */
-.pf-todo { color: #9aa0a6; font-style: italic; }
-
-/* ===== PREUVES SECTION ===== */
-.pf-preuves {
-  border-top: 1px dashed #dee2e6;
-  padding-top: 0.85rem;
-}
- 
-.pf-preuves-title {
-  font-weight: 600;
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #6c757d;
-  margin-bottom: 0.55rem;
-}
- 
-.pf-preuves-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
- 
-.pf-preuve-link {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.83rem;
-  padding: 0.3rem 0.75rem;
-  border-radius: 20px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  border: 1px solid;
+  padding: 0.95rem 1.1rem;
+  background: #fff;
+  color: #1d2733;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
   font-weight: 500;
+  line-height: 1.4;
+  box-shadow: none;
 }
- 
-.pf-preuve-link:hover {
-  text-decoration: none;
-  transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+.pf-comp-block .accordion-button:not(.collapsed) { background: var(--pf-tint); color: #1d2733; }
+.pf-comp-block .accordion-button:hover { background: var(--pf-tint); }
+.pf-comp-block .accordion-button:focus-visible { outline: 3px solid var(--pf-line); outline-offset: -3px; }
+.pf-comp-block .accordion-button::after { margin-left: 0.75rem; }
+
+.pf-badge {
+  flex: none;
+  margin: 0 !important;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  background: var(--pf-c);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
- 
-/* Couleurs des badges de preuves par section */
-#pf-administrer .pf-preuve-link {
-  color: #b02a37;
-  border-color: rgba(220,53,69,0.3);
-  background: rgba(220,53,69,0.06);
+.pf-count {
+  flex: none;
+  margin-left: auto;
+  padding-left: 0.75rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--pf-c);
+  white-space: nowrap;
 }
-#pf-administrer .pf-preuve-link:hover {
-  background: rgba(220,53,69,0.12);
-  border-color: rgba(220,53,69,0.5);
-  color: #b02a37;
-}
- 
-#pf-connecter .pf-preuve-link {
-  color: #c85f00;
-  border-color: rgba(253,126,20,0.3);
-  background: rgba(253,126,20,0.06);
-}
-#pf-connecter .pf-preuve-link:hover {
-  background: rgba(253,126,20,0.12);
-  border-color: rgba(253,126,20,0.5);
-  color: #c85f00;
-}
- 
-#pf-programmer .pf-preuve-link {
-  color: #8a6500;
-  border-color: rgba(255,193,7,0.4);
-  background: rgba(255,193,7,0.08);
-}
-#pf-programmer .pf-preuve-link:hover {
-  background: rgba(255,193,7,0.16);
-  border-color: rgba(255,193,7,0.6);
-  color: #8a6500;
+.pf-count-empty { color: #8a94a0; font-weight: 400; }
+
+.pf-comp-block .accordion-body { padding: 1.4rem 1.4rem 1.5rem; }
+
+.pf-desc {
+  max-width: 68ch;
+  margin: 0 0 1.4rem;
+  color: #3b4652;
+  font-size: 1rem;
+  line-height: 1.65;
 }
 
-#pf-securiser .pf-preuve-link {
-  color: #59339d;
-  border-color: rgba(111,66,193,0.3);
-  background: rgba(111,66,193,0.06);
+/* Analyse : intitulé à gauche, texte à droite */
+.pf-details-grid { border-top: 1px solid #e9edf2; }
+.pf-detail {
+  display: grid;
+  grid-template-columns: 11.5rem minmax(0, 1fr);
+  gap: 0.25rem 1.5rem;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid #e9edf2;
 }
-#pf-securiser .pf-preuve-link:hover {
-  background: rgba(111,66,193,0.12);
-  border-color: rgba(111,66,193,0.5);
-  color: #59339d;
+.pf-detail-title {
+  margin: 0;
+  padding-top: 0.15rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--pf-c);
 }
- 
-#pf-surveiller .pf-preuve-link {
-  color: #0f6f7f;
-  border-color: rgba(23,162,184,0.3);
-  background: rgba(23,162,184,0.06);
+.pf-detail p { max-width: 62ch; margin: 0; font-size: 0.94rem; line-height: 1.65; color: #3b4652; }
+.pf-detail code { color: var(--pf-c); background: var(--pf-tint); padding: 0.05rem 0.3rem; border-radius: 4px; font-size: 0.86em; }
+
+/* Fiche pas encore rédigée : une seule ligne au lieu de cinq blocs vides */
+.pf-details-grid.pf-empty .pf-detail { display: none; }
+.pf-details-grid.pf-empty { border-top: 0; }
+.pf-details-grid.pf-empty::before {
+  content: "Analyse en cours de rédaction.";
+  display: block;
+  padding: 0.8rem 1rem;
+  border: 1px dashed #cfd6de;
+  border-radius: 8px;
+  color: #6b7580;
+  font-size: 0.92rem;
 }
-#pf-surveiller .pf-preuve-link:hover {
-  background: rgba(23,162,184,0.12);
-  border-color: rgba(23,162,184,0.5);
-  color: #0f6f7f;
+.pf-todo { color: #8a94a0; font-size: 0.92rem; }
+
+/* Documents joints */
+.pf-preuves { margin-top: 1.5rem !important; }
+.pf-preuves-title {
+  margin: 0 0 0.7rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1d2733;
+}
+.pf-preuves-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 0.6rem; }
+.pf-preuve-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--pf-line);
+  border-radius: 10px;
+  background: var(--pf-tint);
+  color: #1d2733;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.pf-preuve-link > .bi-file-earmark-text { flex: none; font-size: 1.35rem; color: var(--pf-c); }
+.pf-doc-text { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.pf-doc-code { font-size: 0.76rem; font-weight: 600; color: var(--pf-c); }
+.pf-doc-title { font-size: 0.88rem; line-height: 1.35; color: #1d2733; }
+.pf-doc-open { flex: none; font-size: 0.85rem; color: var(--pf-c); opacity: 0.55; }
+.pf-preuve-link:hover { border-color: var(--pf-c); background: #fff; color: #1d2733; }
+.pf-preuve-link:hover .pf-doc-open { opacity: 1; }
+.pf-preuve-link:focus-visible { outline: 3px solid var(--pf-line); outline-offset: 2px; }
+
+@media (max-width: 640px) {
+  .pf-detail { grid-template-columns: 1fr; }
+  .pf-comp-block .accordion-body { padding: 1.1rem 1rem 1.2rem; }
+  .pf-count { display: none; }
+  .pf-btn { padding: 0.5rem 0.9rem; font-size: 0.88rem; }
 }
 </style>
 
