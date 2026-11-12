@@ -43,14 +43,9 @@ function pfFilter(key, btn) {
   btn.setAttribute('aria-pressed', 'true');
   document.getElementById('pf-' + key).classList.remove('hidden');
 }
-// Indique sur chaque AC le nombre de documents joints, et repère les fiches pas encore rédigées
+// Repère les fiches pas encore rédigées
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.pf-comp-block .accordion-item').forEach(item => {
-    const n = item.querySelectorAll('.pf-preuve-link').length;
-    const tag = document.createElement('span');
-    tag.className = 'pf-count' + (n ? '' : ' pf-count-empty');
-    tag.textContent = n ? n + (n > 1 ? ' documents' : ' document') : 'à venir';
-    item.querySelector('.accordion-button').appendChild(tag);
     const texts = item.querySelectorAll('.pf-detail p');
     if (texts.length && [...texts].every(t => t.querySelector('.pf-todo'))) {
       item.querySelector('.pf-details-grid').classList.add('pf-empty');
@@ -1598,7 +1593,7 @@ document.addEventListener('DOMContentLoaded', () => {
 .pf-comp-block .accordion-button:not(.collapsed) { background: var(--pf-tint); color: #1d2733; }
 .pf-comp-block .accordion-button:hover { background: var(--pf-tint); }
 .pf-comp-block .accordion-button:focus-visible { outline: 3px solid var(--pf-line); outline-offset: -3px; }
-.pf-comp-block .accordion-button::after { margin-left: 0.75rem; }
+.pf-comp-block .accordion-button::after { margin-left: auto; }
 
 .pf-badge {
   flex: none;
@@ -1612,17 +1607,6 @@ document.addEventListener('DOMContentLoaded', () => {
   letter-spacing: 0.01em;
   white-space: nowrap;
 }
-.pf-count {
-  flex: none;
-  margin-left: auto;
-  padding-left: 0.75rem;
-  font-family: "Roboto", sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--pf-c);
-  white-space: nowrap;
-}
-.pf-count-empty { color: #8a94a0; font-weight: 400; }
 
 .pf-comp-block .accordion-body { padding: 1.4rem 1.4rem 1.5rem; }
 
@@ -1702,7 +1686,6 @@ document.addEventListener('DOMContentLoaded', () => {
 @media (max-width: 640px) {
   .pf-detail { grid-template-columns: 1fr; }
   .pf-comp-block .accordion-body { padding: 1.1rem 1rem 1.2rem; }
-  .pf-count { display: none; }
   .pf-btn { padding: 0.5rem 0.9rem; font-size: 0.88rem; }
 }
 </style>
